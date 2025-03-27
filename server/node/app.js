@@ -10,6 +10,7 @@ const app = express();
 const config = require("./config");
 var axios = require("axios");
 const localStorage = require("localStorage");
+const bodyParser = require("body-parser");
 
 // UTILS
 const createData = require("./util/consent_detail");
@@ -18,8 +19,8 @@ const dataFlow = require("./util/request_data");
 // use the express-static middleware
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.text({ defaultCharset: "utf-8" }));
 
 app.use(express.static("public"));
